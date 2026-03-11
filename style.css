@@ -1,0 +1,1189 @@
+﻿body{
+font-family:Arial;
+margin:0;
+background:#f2f2f2;
+}
+
+header{
+background:linear-gradient(135deg,#2c3e50,#4ca1af);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+color:white;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.title h1{
+margin:0;
+font-size:24px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.title p{
+margin:0;
+font-size:13px;
+opacity:0.8;
+}
+
+.login-area input{
+padding:5px;
+margin:2px;
+}
+
+.login-area{
+display:flex;
+gap:8px;
+align-items:center;
+}
+
+.login-area input{
+padding:8px 10px;
+border-radius:6px;
+border:none;
+outline:none;
+}
+
+.login-area button{
+background:#27ae60;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+}
+
+.login-area button:hover{
+background:#1e874b;
+}
+
+.container{
+display:grid;
+grid-template-columns: 3fr 1fr;
+gap:20px;
+padding:20px;
+max-width:1400px;
+margin:auto;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+gap:15px;
+padding:10px;
+}
+
+.side-panel{
+order:2;
+}
+
+.table-area{
+order:1;
+}
+
+}
+
+/* AREA TABLE */
+
+.table-area{
+background:#ffffff;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+overflow-x:auto;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+font-size:14px;
+}
+
+/* HEADER */
+
+thead th{
+background:#f4f6f8;
+color:#222;          /* tambahkan ini */
+font-weight:600;
+text-align:center;
+padding:10px;
+border:1px solid #dcdcdc;
+}
+
+/* BODY */
+
+tbody td{
+padding:8px 10px;
+border:1px solid #e3e3e3;
+color:#222;          /* tambahkan ini */
+}
+
+/* HOVER ROW */
+
+tbody tr:hover{
+background:#f8fbff;
+}
+
+/* NOMOR */
+
+tbody td:first-child{
+text-align:center;
+width:40px;
+}
+
+/* JUMLAH */
+
+tbody td:last-child{
+text-align:right;
+font-weight:500;
+}
+
+/* EDIT MODE */
+
+.editCell:focus{
+outline:none;
+background:#fff6b0;
+}
+
+/* DATE HEADER */
+
+.date-header{
+font-size:16px;
+font-weight:600;
+margin-bottom:10px;
+color:#333;
+}
+
+.date-header{
+background:#f1c40f;
+padding:12px;
+font-weight:600;
+text-align:center;
+border-radius:6px;
+margin-bottom:10px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+th{
+background:#34495e;
+color:white;
+font-weight:500;
+}
+
+tbody tr:hover{
+background:#f5f7fa;
+}
+
+.history{
+flex:1;
+background:white;
+padding:10px;
+}
+
+.history h3{
+background:#7fa2c8;
+padding:10px;
+text-align:center;
+}
+
+.ap-item{
+display:flex;
+justify-content:space-between;
+margin:5px 0;
+padding:5px;
+}
+
+.summary{
+margin-top:10px;
+font-weight:bold;
+}
+
+.adminOnly{
+display:none;
+}
+
+.approverOnly{
+display:none;
+}
+
+@media(max-width:900px){
+
+.container{
+grid-template-columns:1fr;
+}
+
+header{
+flex-direction:column;
+gap:10px;
+text-align:center;
+}
+
+.login-area{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+}
+
+.adminMenu{
+margin-top:10px;
+}
+
+.adminMenu button,
+.adminOnly{
+background:#3498db;
+border:none;
+color:white;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+margin:5px 5px 5px 0;
+font-weight:500;
+}
+
+.adminOnly:hover{
+background:#2980b9;
+}
+
+.accBtn{
+background:green;
+color:white;
+border:none;
+padding:4px 8px;
+cursor:pointer;
+}
+
+.accDone{
+background:gray;
+}
+
+.statusAcc{
+background:#7CFC00;
+font-weight:bold;
+text-align:center;
+}
+
+.statusPending{
+background:#ff0000;
+color:white;
+font-weight:bold;
+text-align:center;
+}
+
+.iconAcc{
+color:green;
+font-size:18px;
+}
+
+.iconPending{
+color:white;
+font-size:18px;
+}
+
+.summary{
+margin-top:20px;
+background:#fafafa;
+padding:15px;
+border-radius:8px;
+box-shadow:0 3px 10px rgba(0,0,0,0.05);
+}
+
+.summaryTable{
+width:100%;
+border-collapse:collapse;
+font-weight:bold;
+}
+
+.summaryTable td{
+border:1px solid #333;
+padding:6px;
+}
+
+.summaryTable input{
+width:100%;
+border:none;
+text-align:right;
+font-weight:bold;
+font-size:14px;
+}
+
+.yellowRow{
+background:#ffe94d;
+}
+
+.blueRow{
+background:#a7d8ff;
+}
+
+.redRow{
+background:#ff4d4d;
+color:white;
+}
+
+.summaryTable td:nth-child(1){
+width:70%;
+}
+
+.summaryTable td:nth-child(2){
+width:40px;
+text-align:center;
+}
+
+.summaryTable td:nth-child(3){
+text-align:right;
+}
+
+.summaryTable input{
+
+width:100%;
+border:none;
+outline:none;
+text-align:right;
+font-weight:bold;
+font-size:14px;
+background:inherit;
+
+}
+
+.adminOnly{
+display:none;
+}
+
+.actionCol button{
+
+background:#e74c3c;
+color:white;
+border:none;
+padding:5px 10px;
+border-radius:4px;
+cursor:pointer;
+
+}
+
+.actionCol button:hover{
+
+background:#c0392b;
+
+}
+
+.side-panel{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.historyBox,
+.approverBox{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.historyBox h3,
+.approverBox h3{
+margin-top:0;
+background:#34495e;
+color:white;
+padding:10px;
+border-radius:6px;
+font-size:15px;
+}
+
+footer{
+margin-top:30px;
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:15px;
+font-size:13px;
+}
+
+.live-indicator{
+display:inline-block;
+width:10px;
+height:10px;
+background:#00ff00;
+border-radius:50%;
+margin-left:6px;
+animation:blinkLive 1s infinite;
+}
+
+@keyframes blinkLive{
+
+0%{opacity:1;}
+50%{opacity:0.2;}
+100%{opacity:1;}
+
+}
+
+.dark-mode{
+
+background:#121212;
+color:white;
+
+}
+
+.dark-mode .table-area,
+.dark-mode .historyBox,
+.dark-mode .approverBox{
+
+background:#1e1e1e;
+color:white;
+
+}
+
+.dark-mode table{
+
+color:white;
+
+}
+
+.dark-mode th{
+
+background:#222;
+
+}
+
+.dark-mode td{
+
+border-bottom:1px solid #444;
+
+}
+
+.dark-mode header{
+
+background:linear-gradient(135deg,#000,#333);
+
+}
+
+.dark-mode footer{
+
+background:#000;
+
+}
+
+.dark-mode .summaryTable td{
+color:white;
+border:1px solid #555;
+}
+
+.dark-mode .summaryTable input{
+color:white;
+}
+
+.dark-mode .yellowRow{
+background:#665c00;
+}
+
+.dark-mode .blueRow{
+background:#003a66;
+}
+
+.dark-mode .redRow{
+background:#7a0000;
+color:white;
+}
+
+/* PROFILE STYLE */
+
+.profileInfo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.avatar{
+width:35px;
+height:35px;
+border-radius:50%;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+color:#333;
+}
+
+.userInfo{
+display:flex;
+flex-direction:column;
+font-size:13px;
+}
+
+#userName{
+font-weight:600;
+}
+
+#userRole{
+font-size:11px;
+opacity:0.7;
+}
+
+.logoutBtn{
+
+background:#e74c3c;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+
+}
+
+.logoutBtn:hover{
+background:#c0392b;
+}
+
+.avatar{
+
+width:35px;
+height:35px;
+border-radius:50%;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
+font-weight:bold;
+color:#333;
+
+animation:avatarBounce 2s infinite;
+
+}
+
+@keyframes avatarBounce{
+
+0%{transform:translateY(0px)}
+50%{transform:translateY(-3px)}
+100%{transform:translateY(0px)}
+
+}
+
+/* DARK MODE SUMMARY TABLE */
+
+.dark-mode .summary{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode .summaryTable{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode .summaryTable td{
+background:#1e1e1e;
+color:white;
+border:1px solid #444;
+}
+
+.dark-mode .summaryTable input{
+background:#1e1e1e;
+color:white;
+}
+
+/* warna baris khusus */
+
+.dark-mode .yellowRow{
+background:#665c00;
+color:white;
+}
+
+.dark-mode .blueRow{
+background:#003a66;
+color:white;
+}
+
+.dark-mode .redRow{
+background:#7a0000;
+color:white;
+}
+
+.dark-mode .summaryTable tr:hover{
+background:#2a2a2a;
+}
+
+/* HOVER TABLE DARK MODE */
+
+.dark-mode tbody tr:hover{
+background:#2a2a2a;
+color:white;
+}
+
+.dark-mode table{
+color:white;
+}
+
+.dark-mode td{
+color:white;
+}
+
+.dark-mode th{
+background:#1f1f1f;
+color:white;
+}
+
+.dark-mode tbody tr:hover{
+
+background:#2a2a2a;
+color:white;
+transition:0.2s;
+
+}
+
+tbody tr{
+transition:0.2s;
+}
+
+.summary input[readonly]{
+background:#f3f3f3;
+border:1px solid #ccc;
+}
+
+.dark-mode .summary input[readonly]{
+background:#2a2a2a;
+color:#ccc;
+border:1px solid #555;
+}
+.adminOnly{
+transition:0.2s;
+}
+
+.dark-mode .table-area{
+background:#1e1e1e;
+box-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+
+.dark-mode table{
+color:#ddd;
+}
+
+.dark-mode thead th{
+background:#2a2a2a;
+border:1px solid #444;
+}
+
+.dark-mode tbody td{
+border:1px solid #444;
+}
+
+.dark-mode tbody tr:hover{
+background:#2c2c2c;
+}
+
+tbody tr{
+transition:0.2s;
+}
+
+tbody td{
+transition:0.15s;
+}
+
+tbody td:hover{
+background:#eef6ff;
+}
+
+tbody tr{
+transition:0.2s;
+}
+
+tbody tr:hover{
+background:#eef6ff;
+cursor:pointer;
+}
+
+#tableBody td:last-child{
+text-align:right;
+font-weight:600;
+}
+
+.summaryTable td{
+padding:10px 14px;
+border-bottom:1px solid #e5e5e5;
+}
+
+.summaryTable td:last-child{
+text-align:right;
+font-weight:600;
+font-family:monospace;
+}
+
+/* HISTORY BOX */
+
+.historyBox{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.historyBox h3{
+margin:0;
+background:#34495e;
+color:white;
+padding:10px;
+border-radius:6px;
+font-size:15px;
+text-align:center;
+letter-spacing:0.5px;
+}
+
+/* HISTORY CONTENT */
+
+.historyContent{
+padding:5px;
+}
+
+/* DROPDOWN HISTORY */
+
+#historySelect{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+background:#fafafa;
+cursor:pointer;
+transition:0.2s;
+}
+
+#historySelect:hover{
+border-color:#3498db;
+background:#f3f9ff;
+}
+
+#historySelect:focus{
+outline:none;
+border-color:#3498db;
+box-shadow:0 0 5px rgba(52,152,219,0.3);
+}
+
+.dark-mode .historyBox{
+background:#1e1e1e;
+color:white;
+}
+
+.dark-mode #historySelect{
+background:#2a2a2a;
+color:white;
+border:1px solid #555;
+}
+
+.dark-mode #historySelect:hover{
+background:#333;
+}
+
+/* APPROVER PANEL */
+
+.approverRow{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:10px;
+margin-bottom:6px;
+
+border-bottom:1px solid #eee;
+
+}
+
+.approverName{
+
+font-weight:600;
+font-size:14px;
+
+}
+
+.approverStatus{
+
+font-size:13px;
+
+}
+
+/* BUTTON ACC */
+
+.btnAcc{
+
+background:#27ae60;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+
+transition:0.2s;
+
+}
+
+.btnAcc:hover{
+
+background:#1e8449;
+transform:scale(1.05);
+
+}
+
+/* STATUS ACC */
+
+.statusAccAnim{
+
+color:#27ae60;
+font-weight:600;
+animation:accPop 0.4s ease;
+
+}
+
+/* STATUS PENDING */
+
+.statusPendingAnim{
+
+color:#e74c3c;
+font-weight:600;
+animation:pendingBlink 1.5s infinite;
+
+}
+
+/* ANIMATION ACC */
+
+@keyframes accPop{
+
+0%{transform:scale(0.7);opacity:0}
+
+100%{transform:scale(1);opacity:1}
+
+}
+
+/* ANIMATION PENDING */
+
+@keyframes pendingBlink{
+
+0%{opacity:1}
+
+50%{opacity:0.4}
+
+100%{opacity:1}
+
+}
+
+.dark-mode .approverRow{
+
+border-bottom:1px solid #444;
+
+}
+
+.dark-mode .statusPendingAnim{
+
+color:#ff6b6b;
+
+}
+
+.dark-mode .statusAccAnim{
+
+color:#4cd137;
+
+}
+
+/* HOVER TABLE DARK MODE FIX */
+
+.dark-mode tbody td:hover{
+
+background:#2f2f2f;
+color:#ffffff;
+
+}
+
+.dark-mode tbody tr:hover{
+
+background:#2a2a2a;
+
+}
+
+.dark-mode tbody tr:hover{
+background:#2a2a2a;
+color:#fff;
+}
+
+/* EDIT MODE DARK MODE FIX */
+
+.dark-mode .editCell:focus{
+
+background:#3a3a3a;
+color:#ffffff;
+outline:2px solid #4da3ff;
+
+}
+
+.dark-mode .editCell:focus{
+
+background:#333;
+color:#fff;
+outline:2px solid #3498db;
+box-shadow:0 0 6px rgba(52,152,219,0.5);
+
+}
+
+/* ===== FIX EDIT MODE DI DARK MODE ===== */
+
+.dark-mode td.editCell,
+.dark-mode td.editCell:focus,
+.dark-mode td[contenteditable="true"]{
+
+background:#2f2f2f !important;
+color:#ffffff !important;
+caret-color:#ffffff;
+}
+
+/* highlight saat sedang fokus */
+
+.dark-mode td.editCell:focus{
+
+outline:2px solid #3498db;
+box-shadow:0 0 6px rgba(52,152,219,0.6);
+}
+
+/* hover saat edit */
+
+.dark-mode td.editCell:hover{
+
+background:#3a3a3a !important;
+
+}
+
+/* ===== FIX EDIT SUMMARY TABLE DARK MODE ===== */
+
+.dark-mode .summaryTable td,
+.dark-mode .summaryTable input{
+
+background:#1e1e1e;
+color:#ffffff;
+
+}
+
+/* saat input sedang aktif */
+
+.dark-mode .summaryTable input:focus{
+
+background:#2f2f2f;
+color:#ffffff;
+outline:2px solid #3498db;
+box-shadow:0 0 6px rgba(52,152,219,0.5);
+
+}
+
+/* hover row */
+
+.dark-mode .summaryTable tr:hover{
+
+background:#2a2a2a;
+
+}
+
+/* ===== FIX EDIT SUMMARY TABLE DI DARK MODE ===== */
+
+.dark-mode .summaryTable input{
+background:#1e1e1e !important;
+color:#ffffff !important;
+border:1px solid #555;
+}
+
+/* saat sedang diedit */
+
+.dark-mode .summaryTable input:focus{
+background:#2a2a2a !important;
+color:#ffffff !important;
+outline:2px solid #3498db;
+caret-color:#ffffff;
+}
+
+/* sel tempat input */
+
+.dark-mode .summaryTable td{
+background:#1e1e1e !important;
+color:#ffffff !important;
+}
+
+.table-area{
+overflow-x:auto;
+-webkit-overflow-scrolling:touch;
+}
+
+table{
+min-width:600px;
+}
+
+@media(max-width:600px){
+
+.title h1{
+font-size:18px;
+}
+
+.title p{
+font-size:11px;
+}
+
+table{
+font-size:12px;
+}
+
+th,td{
+padding:6px;
+}
+
+.date-header{
+font-size:14px;
+padding:8px;
+}
+
+.summary{
+padding:10px;
+}
+
+.summaryTable td{
+padding:6px;
+font-size:12px;
+}
+
+.login-area input{
+width:90px;
+}
+
+.login-area button{
+padding:6px 10px;
+font-size:12px;
+}
+
+}
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:8px;
+padding:10px;
+}
+
+.profileInfo{
+justify-content:center;
+}
+
+}
+
+button{
+min-height:36px;
+}
+
+input{
+min-height:34px;
+}
+
+.historyBox{
+max-height:250px;
+overflow:auto;
+}
+
+.cashTambahBox{
+
+margin-top:10px;
+padding:10px;
+
+background:#f8f9fa;
+border-radius:8px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+font-weight:600;
+
+}
+
+.cashTambahLabel{
+
+font-size:13px;
+color:#555;
+
+}
+
+.cashTambahValue input{
+
+border:none;
+background:transparent;
+
+font-size:16px;
+font-weight:bold;
+
+text-align:right;
+
+width:120px;
+
+}
+
+.cashTambahValue input:focus{
+
+outline:none;
+
+}
+
+.cashTambahBox{
+
+margin-top:10px;
+padding:10px;
+
+background:#f8f9fa;
+border-radius:8px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+font-weight:600;
+
+}
+
+.cashTambahLabel{
+
+font-size:13px;
+color:#555;
+
+}
+
+.cashTambahValue input{
+
+border:none;
+background:transparent;
+
+font-size:16px;
+font-weight:bold;
+
+text-align:right;
+
+width:120px;
+
+}
+
+.cashTambahValue input:focus{
+
+outline:none;
+
+}

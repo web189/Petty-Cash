@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Petty Cash Depo Parung</title>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="favicon.png">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#2c3e50">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="title">
+<h1>PETTY CASH DEPO PARUNG 2026</h1>
+<p>
+Website Sistem Database Real Time
+<span class="live-indicator"></span> LIVE
+</p>
+</div>
+
+<div class="login-area" id="loginArea">
+
+<div id="loginForm">
+
+<input type="text" id="username" placeholder="User" autocomplete="off">
+<input type="password" id="password" placeholder="Password" autocomplete="off">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div id="profileBox" style="display:none">
+
+<div class="profileInfo">
+
+<div class="avatar" id="avatar"></div>
+
+<div class="userInfo">
+
+<div id="userName"></div>
+<div id="userRole"></div>
+
+</div>
+
+</div>
+
+<button onclick="logout()" class="logoutBtn">
+Logout
+</button>
+
+</div>
+<button onclick="toggleDarkMode()" id="darkBtn">
+<i class="fa-solid fa-moon"></i>
+</button>
+</div>
+
+
+</header>
+
+
+
+<div class="container" role="main">
+
+
+
+<!-- AREA TABLE -->
+<div class="table-area">
+
+<div class="date-header">
+10 Mar 2026
+</div>
+
+
+<table>
+
+<thead>
+<tr>
+<th>No</th>
+<th>Nama</th>
+<th>PO</th>
+<th>Jumlah</th>
+
+</tr>
+</thead>
+
+<tbody id="tableBody">
+
+</tbody>
+
+</table>
+
+
+
+<!-- MENU ADMIN -->
+<div class="adminMenu">
+
+<button onclick="tambahData()" class="adminOnly">Tambah Data</button>
+<button onclick="editAll()" class="adminOnly">EDIT</button>
+<button onclick="saveAll()" class="adminOnly">SAVE</button>
+<button onclick="tableBaru()" class="adminOnly">Table Baru</button>
+
+</div>
+
+
+
+<!-- SUMMARY -->
+<div class="summary">
+
+<table class="summaryTable">
+
+<tr>
+<td>MODAL AWAL PETTY CASH</td>
+<td><input id="uangAdmin" readonly oninput="formatInput(this); hitungKas()"></td>
+</tr>
+
+
+<tr>
+<td>TOTAL PETTY CASH</td>
+<td id="totalDiterima">Rp 0</td>
+</tr>
+
+<tr>
+<td>TOTAL UANG KELUAR</td>
+<td id="totalDiserahkan">Rp 0</td>
+</tr>
+
+<tr>
+<td>SISA PETTY CASH</td>
+<td id="selisih">Rp 0</td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- PANEL KANAN -->
+<div class="side-panel">
+
+
+
+<!-- HISTORY -->
+<div class="historyBox">
+
+<h3>📜 History Petty Cash</h3>
+
+<div class="historyContent">
+
+<select id="historySelect" onchange="pilihHistory()">
+<option value="">Pilih Tanggal History</option>
+</select>
+
+</div>
+
+</div>
+
+
+
+<!-- APPROVER -->
+
+<div class="approverBox">
+
+<h3>💰 Pengajuan Penambahan Petty Cash</h3>
+
+<p class="cashInfo">
+Cash tgl <span id="cashDate">10/03/2026</span>
+</p>
+
+<div class="cashTambahBox">
+
+<div class="cashTambahLabel">
+Tambahan Petty Cash
+</div>
+
+<div class="cashTambahValue">
+<input id="tambahanCash" readonly oninput="formatInput(this); hitungKas()">
+</div>
+
+</div>
+
+<div id="approverPanel"></div>
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+<footer>
+
+<p>© 2026 Petty Cash Depo Parung — Real Time System</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>
