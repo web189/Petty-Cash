@@ -117,6 +117,7 @@ Login
 
 
 
+
 <div class="container" role="main">
 
 
@@ -255,6 +256,27 @@ Tambahan Petty Cash
 
 </div>
 
+
+<!-- FLOATING CHAT BUTTON -->
+<div id="chatFloatBtn" onclick="toggleChatBox()">💬</div>
+
+<!-- CHAT BOX -->
+<div id="chatContainer" class="chatContainer">
+
+<div class="chatHeader">
+<span>Petty Cash Chat</span>
+<span onclick="toggleChatBox()" class="chatClose">✖</span>
+</div>
+
+<div id="chatMessages" class="chatMessages"></div>
+
+<div class="chatInputArea">
+<input type="text" id="chatText" placeholder="Ketik pesan...">
+<button type="button" onclick="sendChat()">Kirim</button>
+</div>
+
+</div>
+
 <footer>
 
 <p>© 2026 Petty Cash Depo Parung — Real Time System</p>
@@ -267,8 +289,8 @@ Tambahan Petty Cash
 <!-- Firebase -->
 
 <!-- Firebase Library -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
 <script>
 

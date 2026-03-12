@@ -1,4 +1,4 @@
-﻿let currentUser = null
+﻿﻿let currentUser = null
 let role = "guest"
 
 
@@ -277,6 +277,7 @@ document.getElementById("loginForm").style.display="none"
 /* tampilkan profile */
 
 document.getElementById("profileBox").style.display="flex"
+
 
 document.getElementById("userName").innerText=user
 document.getElementById("userRole").innerText=role
@@ -825,6 +826,8 @@ renderHistory()
 renderTable()
 renderApprovers()
 
+loadChat()
+
 }
 
 function animateValue(element,start,end,duration){
@@ -1002,3 +1005,99 @@ dropdown.classList.remove("showMenu")
 
 })
 
+
+function sendChat(){
+
+if(!currentUser){
+alert("Silakan login terlebih dahulu")
+return
+}
+
+let text = document.getElementById("chatText").value.trim()
+
+if(text==="") return
+
+let now = new Date()
+
+let time =
+now.getHours().toString().padStart(2,"0")+":"+
+now.getMinutes().toString().padStart(2,"0")
+
+firebase.database().ref("chat").push({
+
+user: currentUser,
+text: text,
+time: time
+
+})
+
+document.getElementById("chatText").value=""
+
+}
+
+function loadChat(){
+
+firebase.database().ref("chat").limitToLast(50)
+.on("child_added",(snap)=>{
+
+let data = snap.val()
+
+let box = document.getElementById("chatMessages")
+
+let mine = data.user === currentUser
+
+let avatar = data.user.charAt(0)
+
+box.innerHTML += `
+
+<div class="chatBubble ${mine ? 'chatMine' : 'chatOther'}">
+
+<div class="chatUser">
+${avatar} ${data.user}
+</div>
+
+${data.text}
+
+<div class="chatTime">
+${data.time}
+</div>
+
+</div>
+
+`
+
+box.scrollTop = box.scrollHeight
+
+})
+
+}
+
+function toggleChatBox(){
+
+let box = document.getElementById("chatContainer")
+
+if(box.style.display === "flex"){
+box.style.display = "none"
+}else{
+box.style.display = "flex"
+}
+
+}
+
+let lastMsgUser = ""
+
+function notifyChat(user){
+
+if(user !== currentUser){
+
+let btn = document.getElementById("chatFloatBtn")
+
+btn.innerHTML = "🔔"
+
+setTimeout(()=>{
+btn.innerHTML="💬"
+},2000)
+
+}
+
+}
