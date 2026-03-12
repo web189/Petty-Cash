@@ -2225,3 +2225,72 @@ pointer-events:auto;
 #chatFloatBtn{
 z-index:99999;
 }
+
+.chatBubble{
+max-width:70%;
+padding:10px 14px;
+margin:6px;
+border-radius:12px;
+font-size:14px;
+position:relative;
+animation:fadeChat .3s ease;
+}
+
+.chatMine{
+background:#DCF8C6;
+margin-left:auto;
+}
+
+.chatOther{
+background:#ffffff;
+border:1px solid #eee;
+}
+
+.chatRow{
+display:flex;
+align-items:flex-end;
+gap:6px;
+}
+
+.chatAvatar{
+width:28px;
+height:28px;
+border-radius:50%;
+background-size:cover;
+background-position:center;
+}
+
+.chatUser{
+font-size:11px;
+color:#555;
+margin-bottom:3px;
+}
+
+.chatTime{
+font-size:10px;
+color:#777;
+text-align:right;
+margin-top:4px;
+}
+
+@keyframes fadeChat{
+from{opacity:0;transform:translateY(10px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+
+
+footer .developer{
+margin-top:5px;
+font-size:13px;
+}
+
+footer a{
+color:#e1306c;
+text-decoration:none;
+font-weight:500;
+}
+
+footer a:hover{
+text-decoration:underline;
+}

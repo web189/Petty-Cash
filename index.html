@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://web189.github.io/Petty-Cash/">
 <meta property="og:title" content="Petty Cash Depo Parung 2026 - Sistem Keuangan Real-Time">
 <meta property="og:description" content="Platform manajemen Petty Cash untuk mencatat transaksi, memonitor pengeluaran, dan mengelola kas operasional secara cepat, akurat, dan real-time.">
-<meta property="og:image" content="https://web189.github.io/Petty-Cash/preview.jpg">
+<meta property="og:image" content="https://web189.github.io/Petty-Cash/preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Petty Cash Depo Parung - Sistem Manajemen Kas">
 <meta name="twitter:description" content="Website sistem Petty Cash modern untuk monitoring pengeluaran kas operasional secara real-time dan efisien.">
-<meta name="twitter:image" content="https://web189.github.io/Petty-Cash/preview.jpg">
+<meta name="twitter:image" content="https://web189.github.io/Petty-Cash/preview.png">
 
 
 <link rel="stylesheet" href="style.css">
@@ -100,13 +100,23 @@ Login
 📷 Upload Foto Profil
 </button>
 
+<button onclick="window.open('https://web189.github.io/UangRitase/','_blank')">
+🚚 Uang Ritase Drive TUA
+</button>
+
 <button onclick="resetPasswordUser()" id="resetPassBtn">
 🔑 Reset Password User
+</button>
+
+<button id="hapusChatBtn" onclick="hapusHistoryChat()" style="display:none">
+🗑 Hapus History Chat
 </button>
 
 <button onclick="logout()">
 🚪 Logout
 </button>
+
+
 
 </div>
 
@@ -265,6 +275,7 @@ Tambahan Petty Cash
 
 <div class="chatHeader">
 <span>Petty Cash Chat</span>
+<span class="live-indicator"></span> Real Time System
 <span onclick="toggleChatBox()" class="chatClose">✖</span>
 </div>
 
@@ -280,6 +291,13 @@ Tambahan Petty Cash
 <footer>
 
 <p>© 2026 Petty Cash Depo Parung — Real Time System</p>
+
+<p class="developer">
+Web Developer by 
+<a href="https://www.instagram.com/benyoriki/?igsh=cGZkOXpuN2JyYjAy#" target="_blank">
+@benyoriki
+</a>
+</p>
 
 </footer>
 
@@ -344,5 +362,4 @@ loadFirebase();
 </html>
 
 </body>
-
 </html>

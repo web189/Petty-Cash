@@ -305,9 +305,10 @@ document.getElementById("tambahanCash").value = ""
 
 if(role === "developer"){
 document.getElementById("resetPassBtn").style.display="block"
+document.getElementById("hapusChatBtn").style.display="block"
 }
 
-
+firebase.database().ref("online/"+currentUser).set(true)
 
 /* render data */
 
@@ -331,6 +332,12 @@ document.getElementById("loginForm").style.display="flex"
 document.getElementById("profileBox").style.display="none"
 
 /* sembunyikan menu admin */
+
+window.addEventListener("beforeunload",()=>{
+
+firebase.database().ref("online/"+currentUser).remove()
+
+})
 
 setAdminAccess()
 
@@ -788,6 +795,9 @@ c.contentEditable=false
 c.style.background=""
 })
 
+firebase.database().ref("pettycash").set(tableData)
+
+alert("Data tersimpan realtime")
 
 renderTable()
 
@@ -1029,6 +1039,7 @@ user: currentUser,
 text: text,
 time: time
 
+
 })
 
 document.getElementById("chatText").value=""
@@ -1099,5 +1110,59 @@ btn.innerHTML="💬"
 },2000)
 
 }
+
+}
+
+function loadFirebase(){
+
+firebase.database().ref("pettycash").on("value",(snapshot)=>{
+
+let data = snapshot.val()
+
+if(data){
+tableData = data
+renderTable()
+}
+
+})
+
+}
+
+function loadOnlineUsers(){
+
+firebase.database().ref("online")
+.on("value",(snap)=>{
+
+let data = snap.val()
+
+let onlineList = Object.keys(data || {})
+
+document.querySelectorAll(".userName").forEach(el=>{
+
+let name = el.innerText
+
+if(onlineList.includes(name)){
+el.innerHTML = name + " 🟢"
+}else{
+el.innerHTML = name
+}
+
+})
+
+})
+
+}
+
+function hapusHistoryChat(){
+
+let konfirmasi = confirm("Yakin ingin menghapus seluruh history chat?")
+
+if(!konfirmasi) return
+
+firebase.database().ref("chat").remove()
+
+document.getElementById("chatMessages").innerHTML=""
+
+alert("History chat berhasil dihapus")
 
 }
