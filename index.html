@@ -244,5 +244,62 @@ Tambahan Petty Cash
 <script src="script.js"></script>
 
 
+<!-- Firebase -->
+
+<!-- Firebase Library -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
+
+<script>
+
+// CONFIG FIREBASE
+const firebaseConfig = {
+  apiKey: "AIzaSyCZGIUz0UCyDWjDqHUOJJzKSvfZLTD7UVo",
+  authDomain: "pettycashparung.firebaseapp.com",
+  databaseURL: "https://pettycashparung-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "pettycashparung",
+  storageBucket: "pettycashparung.firebasestorage.app",
+  messagingSenderId: "59934336340",
+  appId: "1:59934336340:web:08421e9b4c221b59c6d4c1",
+  measurementId: "G-XZG24E9VEH"
+};
+
+
+// INIT FIREBASE
+firebase.initializeApp(firebaseConfig);
+
+// PANGGIL DATABASE
+const db = firebase.database();
+
+
+// =========================
+// FUNCTION LOAD DATA
+// =========================
+function loadFirebase(){
+
+firebase.database().ref("pettycash").on("value",(snapshot)=>{
+
+let data = snapshot.val();
+
+if(data){
+tableData = data;
+renderTable();
+}
+
+});
+
+}
+
+
+// =========================
+// JALANKAN SAAT WEB DIBUKA
+// =========================
+loadFirebase();
+
+</script>
+
+</body>
+</html>
+
 </body>
 </html>
