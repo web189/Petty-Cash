@@ -36,38 +36,60 @@ Website Sistem Database Real Time
 
 <div class="login-area" id="loginArea">
 
-<div id="loginForm">
+<div id="loginForm" class="loginForm">
 
-<input type="text" id="username" placeholder="User" autocomplete="off">
+<div class="inputBox">
+<i class="fa-solid fa-user"></i>
+<input type="text" id="username" placeholder="Username" autocomplete="off">
+</div>
+
+<div class="inputBox">
+<i class="fa-solid fa-lock"></i>
 <input type="password" id="password" placeholder="Password" autocomplete="off">
+</div>
 
-<button onclick="login()">Login</button>
+<button onclick="login()" class="loginBtn">
+Login
+</button>
 
 </div>
 
-<div id="profileBox" style="display:none">
 
-<div class="profileInfo">
+<div id="profileBox" class="profileMenu" style="display:none">
+
+<div class="profileHeader" onclick="toggleProfileMenu()">
 
 <div class="avatar" id="avatar"></div>
 
 <div class="userInfo">
-
 <div id="userName"></div>
 <div id="userRole"></div>
+</div>
+
+<i class="fa-solid fa-chevron-down dropdownIcon"></i>
 
 </div>
 
-</div>
+<div class="profileDropdown" id="profileDropdown">
 
-<button onclick="logout()" class="logoutBtn">
-Logout
+<button onclick="toggleDarkMode()">
+🌙 Light Mode / Dark Mode
+</button>
+
+<button onclick="uploadFoto()">
+📷 Upload Foto Profil
+</button>
+
+<button onclick="resetPasswordUser()" id="resetPassBtn">
+🔑 Reset Password User
+</button>
+
+<button onclick="logout()">
+🚪 Logout
 </button>
 
 </div>
-<button onclick="toggleDarkMode()" id="darkBtn">
-<i class="fa-solid fa-moon"></i>
-</button>
+
 </div>
 
 
@@ -198,6 +220,10 @@ Tambahan Petty Cash
 </div>
 
 <div id="approverPanel"></div>
+
+<div class="approvalProgress">
+<div class="progressFill" id="progressFill"></div>
+</div>
 
 </div>
 

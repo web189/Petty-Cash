@@ -1,12 +1,19 @@
 ﻿let currentUser = null
 let role = "guest"
 
+
+
 const admins = [
-"Riki","Tahir","Kamil","Randhika","Daud","Budiyansah"
+"riki","tahir","kamil","randhika","daud","budiyansah"
 ]
 
+
 const approvers = [
-"Pak Restu","Ibu Oky","Pak Erwin","Pak Yoga","Ibu Alda"
+"restu","oky","erwin","yoga","alda"
+]
+
+const developers = [
+"Web Developer"
 ]
 
 let tables = {}
@@ -169,21 +176,98 @@ c.selisih,
 }
 
 
+const userPhotos = {
+
+"Pak Restu":"img/users/restu.jpg",
+"Ibu Oky":"img/users/oky.jpg",
+"Pak Erwin":"img/users/erwin.jpg",
+"Pak Yoga":"img/users/yoga.jpg",
+"Ibu Alda":"img/users/alda.jpg",
+
+"Riki":"img/users/riki.jpg",
+"Tahir":"img/users/tahir.jpg",
+"Kamil":"img/users/kamil.jpg",
+"Randhika":"img/users/randhika.jpg",
+"Daud":"img/users/daud.jpg",
+"Budiyansah":"img/users/budi.jpg",
+
+"Web Developer":"img/users/dev.jpg"
+
+}
+
+
 function login(){
 
 let user = document.getElementById("username").value.trim()
+let pass = document.getElementById("password").value.trim()
+
+/* cek user */
+
+if(!admins.includes(user) && !approvers.includes(user)&& !developers.includes(user)){
+alert("User tidak dikenal")
+return
+}
+
+/* pastikan database ada */
+
+let usersDB = JSON.parse(localStorage.getItem("usersDB")) || {}
+
+/* jika user belum ada → buat password default */
+
+if(!usersDB[user]){
+
+usersDB[user] = {
+password:"prg123",
+firstLogin:true
+}
+
+localStorage.setItem("usersDB",JSON.stringify(usersDB))
+
+}
+
+/* cek password */
+
+if(usersDB[user].password !== pass){
+
+alert("Password salah")
+return
+
+}
+
+/* login berhasil */
 
 currentUser = user
 
-if(admins.includes(user)){
+if(developers.includes(user)){
+role="developer"
+}
+else if(admins.includes(user)){
 role="admin"
 }
-else if(approvers.includes(user)){
+else{
 role="approver"
 }
-else{
-alert("User tidak dikenal")
+
+/* cek login pertama */
+
+if(usersDB[user].firstLogin){
+
+let newPass = prompt("Login pertama. Silakan ganti password baru")
+
+if(!newPass || newPass.length < 4){
+
+alert("Password minimal 4 karakter")
 return
+
+}
+
+usersDB[user].password = newPass
+usersDB[user].firstLogin = false
+
+localStorage.setItem("usersDB",JSON.stringify(usersDB))
+
+alert("Password berhasil diganti")
+
 }
 
 /* sembunyikan form login */
@@ -199,13 +283,33 @@ document.getElementById("userRole").innerText=role
 
 /* avatar huruf pertama */
 
-document.getElementById("avatar").innerText=user.charAt(0)
+let avatar = document.getElementById("avatar")
+
+let photos = JSON.parse(localStorage.getItem("userPhotos")) || {}
+
+if(photos[user]){
+avatar.innerHTML = `<img src="${photos[user]}">`
+}else{
+avatar.innerText = user.charAt(0)
+}
+
+/* fungsi lama tetap */
 
 setAdminAccess()
+
 if(role !== "admin"){
 document.getElementById("uangAdmin").value = ""
 document.getElementById("tambahanCash").value = ""
 }
+
+if(role === "developer"){
+document.getElementById("resetPassBtn").style.display="block"
+}
+
+
+
+/* render data */
+
 renderTable()
 renderApprovers()
 
@@ -750,3 +854,150 @@ requestAnimationFrame(animation)
 
 }
 
+function renderApprover(){
+
+const panel = document.getElementById("approverPanel");
+
+panel.innerHTML="";
+
+approvers.forEach((a,i)=>{
+
+const avatar = a.nama.charAt(0);
+
+const status = a.acc
+? '<span class="statusAcc">✔ Approved</span>'
+: '<span class="statusPending">Pending</span>';
+
+const btn = a.acc
+? ''
+: `<button class="btnAcc" onclick="accApprover(${i})">ACC</button>`;
+
+panel.innerHTML += `
+
+<div class="approverRow">
+
+<div class="approverLeft">
+
+<div class="apAvatar">${avatar}</div>
+
+<div class="approverName">${a.nama}</div>
+
+</div>
+
+<div class="approverStatus">
+
+${status}
+
+</div>
+
+${btn}
+
+</div>
+
+`;
+
+});
+
+updateProgress();
+
+}
+
+function accApprover(i){
+
+approvers[i].acc = true;
+
+renderApprover();
+
+}
+
+function updateProgress(){
+
+let total = approvers.length;
+
+let acc = approvers.filter(a=>a.acc).length;
+
+let percent = (acc/total)*100;
+
+document.getElementById("progressFill").style.width = percent+"%";
+
+}
+
+function resetPasswordUser(){
+
+if(role !== "developer"){
+alert("Hanya Web Developer yang bisa reset password")
+return
+}
+
+let user = prompt("Masukkan nama user yang ingin di reset")
+
+let usersDB = JSON.parse(localStorage.getItem("usersDB")) || {}
+
+if(!usersDB[user]){
+alert("User tidak ditemukan")
+return
+}
+
+usersDB[user].password = "prg123"
+usersDB[user].firstLogin = true
+
+localStorage.setItem("usersDB",JSON.stringify(usersDB))
+
+alert("Password berhasil direset ke prg123")
+
+}
+
+function toggleProfileMenu(){
+
+let dropdown = document.getElementById("profileDropdown")
+let menu = document.getElementById("profileBox")
+
+dropdown.classList.toggle("showMenu")
+menu.classList.toggle("active")
+
+}
+
+function uploadFoto(){
+
+let input = document.createElement("input")
+input.type = "file"
+input.accept = "image/*"
+
+input.onchange = function(){
+
+let file = input.files[0]
+
+let reader = new FileReader()
+
+reader.onload = function(e){
+
+let photos = JSON.parse(localStorage.getItem("userPhotos")) || {}
+
+photos[currentUser] = e.target.result
+
+localStorage.setItem("userPhotos",JSON.stringify(photos))
+
+document.getElementById("avatar").innerHTML =
+`<img src="${e.target.result}">`
+
+}
+
+reader.readAsDataURL(file)
+
+}
+
+input.click()
+
+}
+
+document.addEventListener("click", function(e){
+
+let profile = document.querySelector(".profileMenu")
+
+let dropdown = document.getElementById("profileDropdown")
+
+if(!profile.contains(e.target)){
+dropdown.classList.remove("showMenu")
+}
+
+})
