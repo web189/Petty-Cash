@@ -64,8 +64,41 @@ function getTable(){
 return tables[currentDate]
 }
 
+function formatTanggal(tgl){
+
+let d = new Date(tgl)
+
+let bulan = [
+"Jan","Feb","Mar","Apr","Mei","Jun",
+"Jul","Agu","Sep","Okt","Nov","Des"
+]
+
+return d.getDate()+" "+bulan[d.getMonth()]+" "+d.getFullYear()
+
+}
+
+/* FORMAT TANGGAL UNTUK CASH */
+
+function formatTanggalCash(tgl){
+
+let d = new Date(tgl)
+
+let hari = String(d.getDate()).padStart(2,"0")
+let bulan = String(d.getMonth()+1).padStart(2,"0")
+let tahun = d.getFullYear()
+
+return hari + "/" + bulan + "/" + tahun
+
+}
 
 function renderTable(){
+    
+    let header = document.getElementById("tableDate")
+
+if(header){
+header.innerText = formatTanggal(currentDate)
+}
+    
 
 let table = tables[currentDate]
 let data = table.rows
@@ -795,7 +828,9 @@ c.contentEditable=false
 c.style.background=""
 })
 
-firebase.database().ref("pettycash").set(tableData)
+/* simpan semua tabel ke firebase */
+
+firebase.database().ref("pettycash").set(tables)
 
 alert("Data tersimpan realtime")
 
@@ -830,6 +865,7 @@ if(localStorage.getItem("mode")=="dark"){
 document.body.classList.add("dark-mode")
 }
 
+    loadFirebase()
 /* render system */
 
 renderHistory()
@@ -837,6 +873,12 @@ renderTable()
 renderApprovers()
 
 loadChat()
+    
+    /* AUTO SAVE FIREBASE setiap 10 detik */
+
+setInterval(()=>{
+firebase.database().ref("pettycash").set(tables)
+},10000)
 
 }
 
@@ -1120,8 +1162,18 @@ firebase.database().ref("pettycash").on("value",(snapshot)=>{
 let data = snapshot.val()
 
 if(data){
-tableData = data
+
+tables = data
+
+/* ambil tanggal terakhir */
+
+let keys = Object.keys(tables)
+
+currentDate = keys[keys.length-1]
+
+renderHistory()
 renderTable()
+
 }
 
 })
